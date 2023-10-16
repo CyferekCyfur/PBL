@@ -7,8 +7,9 @@ capture3 = cv.VideoCapture('Vechicles/Urban/march9.avi')
 #display frames one by one 
 while True:
     isTrue, frame = capture3.read() # to change the video, just replace captureX with desired number, for example capture1
+    if isTrue == False: #checking if the video is over
+        break
     cv.imshow('Video', frame)
     if cv.waitKey(20) & 0xFF==ord('d'): #key 'd' stops the video playback
         break
-capture.release()
-cv.destroyAllWindows()
+capture3.release()
