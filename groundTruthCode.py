@@ -4,8 +4,8 @@ import os
 
 # Funkcja do odczytu rzeczywistych położeń z pliku ground truth
 def read_ground_truth(frame_number):
-    file_path = f'/home/MaciejWozniakowski/programowanko/pythonProjects/PBL/training/label_2{frame_number:03d}.txt'
-    
+    file_path = os.path.join(os.getcwd() + 'training/label_2/')
+
     # Tutaj dodaj kod do odczytu danych z pliku ground truth
     # Zwróć listę rzeczywistych położeń, na przykład [(x1, y1), (x2, y2), ...]
     # Możesz dostosować ten kod do formatu twoich danych w plikach ground truth.
@@ -21,10 +21,10 @@ def read_ground_truth(frame_number):
         return []
 
 # Wczytaj model
-model = tf.keras.applications.MobileNetV2(weights='/home/MaciejWozniakowski/programowanko/pythonProjects/PBL/YOLOv8-3D- mobilenetv2/mobilenetv2/mobilenetv2_weights.h5')
+model_path = os.path.join(os.getcwd() + '/mobilenetv2/' + 'mobilenetv2_weights.h5/')
+model = tf.keras.applications.MobileNetV2(weights=model_path)
 
-
-capture = cv2.VideoCapture('/home/MaciejWozniakowski/programowanko/pythonProjects/PBL/YOLOv8-3D- mobilenetv2/mobilenetv2_output_video.mp4')
+capture = cv2.VideoCapture(os.path.join(os.getcwd() + '/mobilenetv2/' + 'mobilenetv2_output_video.mp4'))
 while True:
     isTrue, frame = capture.read()
     if isTrue == False:
