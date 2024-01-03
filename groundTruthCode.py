@@ -68,7 +68,7 @@ def draw_ground_truth(image, ground_truth_positions):
 def main():
     # Read model
     model_path = os.path.join(os.getcwd() + '/YOLOV8-3D_models' + '/mobilenetv2/' + 'mobilenetv2_weights.h5')
-    
+    model_path = '/home/jakub/Documents/PBL/mobilenetv2_weights.h5'
     model = tf.keras.applications.MobileNetV2(weights=None)
     model.load_weights(model_path, by_name=True)
 
