@@ -14,8 +14,25 @@ def extractData(file):
             difficultyLevels = [
                 float(element.strip()) for element in noSuffix.split(",")
             ]
+            i = 1
+            for level in difficultyLevels:
+                dataBbox |= {"Difficulty %i" % i: level}
+                dataBev |= {"Difficulty %i" % i: level}
+                data3d |= {"Difficulty %i" % i: level}
+                dataAos |= {"Difficulty %i" % i: level}
 
-            #    for line in file:
+                i += 1
+                if i == 1 + len(difficultyLevels):
+                    i = 1
+                    print(dataBbox)
+                    print(dataBev)
+                    print(data3d)
+                    print(dataAos)
+
+    #            dataBbox{f'Difficulty Level %', i : difficultyLevels[i] }
+    #                dataBbox{f'Difficulty Level %', i : difficultyLevels[i] }
+
+    #    for line in file:
     #        if line.startswith('bbox'):
     #    for line in file:
     #        if line.startswith('bev'):
@@ -32,5 +49,5 @@ if __name__ == "__main__":
     benchmarkMonocon12_17 = open("benchmarkMonocon12_17", "r")
     yolo = open("YOLOstereo3D", "r")
 
-    extractData(yolo)
+    # extractData(yolo)
     extractData(smoke)
